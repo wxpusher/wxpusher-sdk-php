@@ -9,16 +9,18 @@
 ## 如果它可以帮助你，希望你能点亮一颗Star，谢谢。
 
 ## 主要实现功能
-* 快速发送消息（基于GET接口）
 
+### 快速发送消息（基于GET接口）
+```
 	$wxpusher->quickSend('用户id','主题id','内容','url');
 		成功返回true
         失败返回错误信息
+```
 
-
-* 标准消息发送（基于Post接口）
-
+### 标准消息发送（基于Post接口）
+```
 	send($content = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false)
+
 		$contentType:
     	       1表示文字
     	       2表示html
@@ -47,17 +49,17 @@
     	  		执行全部成功返回 True （bool）
     	  		出现错误输出错误信息 （array）
 
-
-* 检查消息发送状态
-
+```
+### 检查消息发送状态
+```
 	$wx->checkStatus( 信息ID（messageId） );
 		信息查询状态
         信息发送成功返回 True
         其余状态返回服务器提示信息(msg)
+```
 
-
-* 返回关注用户信息
-
+### 返回关注用户信息
+```
 	$wx->getFunInfo(页码,每页数量,UID)
 		获取关注用户信息
        $uid 默认为空，返回所有关注用户数据    多维数组
@@ -69,11 +71,12 @@
       查询数据
            得到数据返回多维数组
            空数据返回 NULL
-
-* 已关注用户总数
-
+```
+### 已关注用户总数
+```
 	$wx->getFunTotal()
 		返回所有关注用户总数（int）
+```
 
 ## 更加详细方法使用请见Wxpusher.class.php内注释部分
 
