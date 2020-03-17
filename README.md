@@ -1,6 +1,6 @@
-# Wxpusher-PHP-Tools
+# wxpusher-sdk-php
 ------
-## What's the Wxpusher PHP Tools ？
+## What's the wxpusher-sdk-php？
 
 * 一个基于PHP针对于 Wxpusher（http://wxpusher.zjiecode.com） 微信推送服务的快速开发工具类。
 * 完整基于 Wxpusher 文档（http://wxpusher.zjiecode.com/docs/） 实现。
@@ -75,8 +75,10 @@
 	$wx->getFunTotal()
 		返回所有关注用户总数（int）
 
+## 更加详细方法使用请见Wxpusher.class.php内注释部分
+
 ## 应用开源
-Wxpusher PHP Tools遵循Apache2开源协议发布，并提供免费使用。
+wxpusher-sdk-php遵循Apache2开源协议发布，并提供免费使用。
 版权所有[2020][Meloncn]
 
 
