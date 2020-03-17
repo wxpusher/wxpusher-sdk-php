@@ -19,7 +19,7 @@
  * +----------------------------------------------------------------------
  *
  */
-namespace notify;
+namespace notify\wxpusher;
 
 class Wxpusher
 {
@@ -70,6 +70,7 @@ class Wxpusher
      *      $wx->quickSend('用户id','主题id','内容','http://domain');
      *          成功返回true
      *          失败返回错误信息
+     *  用户ID与主题ID使用哪一个填写哪一个，不使用留空
      */
     public function quickSend($uid = null , $topicId = null , $content = 'Hello',$url = null){
         $data = http_build_query(
@@ -92,11 +93,13 @@ class Wxpusher
      * @param null $content
      * @param int $contentType
      * @param bool $isUids
-     * @param array $id
+     * @param array int $id
      * @param string $url
      * @return string
      *
      * 标准信息发送方式
+     *
+     * $content: 您要发送的内容 \n换行
      *
      * $contentType:
      *      1表示文字
@@ -113,12 +116,12 @@ class Wxpusher
      *      true    执行完毕后返回messageId和错误信息   array
      *      false   执行完毕后仅返回错误信息，若无错误返回TRUE array bool
      *
-     * $array_id:
+     * $array_id:  单条可使用int类型，多条使用数组方式
      *      array
-     *      string int 单条数据可使用字符串或者整数，自动转化为数组
+     *      int
      *
      * 使用方法实例：
-     *      $wx->send('hello','1','',array('1'),'www.baidu.com',false))
+     *      $wx->send('内容','类型','是否为用户id',id或数组id,'需传送的url',是否返回messageID))
      *
      */
     public function send($content = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false)
@@ -207,7 +210,6 @@ class Wxpusher
      *      得到数据返回多维数组
      *      空数据返回 NULL
      */
-
 
     public function getFunInfo($page = 1,$pageSize = 100,$uid = ''){
         $data = http_build_query(
