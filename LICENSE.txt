@@ -2,8 +2,6 @@
 wxpusher-sdk-php遵循Apache2开源协议发布，并提供免费使用。
 版权所有[2020][Meloncn]
 
-Author's Email：interestingcn01@gmail.com / 1430567640@qq.com
-
 根据2.0版本Apache许可证("许可证")授权；
 根据本许可证，用户可以不使用此文件。
 用户可从下列网址获得许可证副本：
