@@ -32,7 +32,7 @@ class Wxpusher
     }
 
     /**
-     *  内部工具方法
+     *  Post请求工具
      *  用于向服务器快速发送json格式数据
      */
     private function post_json($url, $jsonStr){
@@ -68,7 +68,7 @@ class Wxpusher
         $data = http_build_query(
             array(
                 'appToken' => $this->appToken,
-                'content' => urlencode($content),
+                'content' => $content,
                 'uid' => $uid,
                 'topicId' => $topicId,
                 'url'   => urlencode($url),
@@ -89,6 +89,7 @@ class Wxpusher
     /**
      * @param null $content
      * @param int $contentType
+     * @param int $summary
      * @param bool $isUids
      * @param array int $id
      * @param string $url
@@ -98,7 +99,7 @@ class Wxpusher
      * 需调用CURL
      *
      * $content: 您要发送的内容 \n换行
-     *
+     * $summary: 消息摘要 \n换行  可为空
      * $contentType:
      *     |- 1表示文字
      *     |- 2表示html
@@ -118,9 +119,9 @@ class Wxpusher
      *      |—false   执行完毕后仅返回错误信息，若无错误返回TRUE
      *
      * 使用方法实例：
-     *      $wx->send('内容','类型','是否为用户id',id或数组id,'需传送的url',是否返回messageID))
+     *      $wx->send('内容','摘要','类型','是否为用户id',id或数组id,'需传送的url',是否返回messageID))
      */
-    public function send($content = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false)
+    public function send($content = null,$summary = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false)
     {
         {
             $type = $isUids?'uids':'topicIds';
@@ -132,6 +133,7 @@ class Wxpusher
             $postdata = array(
                 'appToken' => $this->appToken,
                 'content' => $content,
+                'summary' => $summary,
                 $type   => $array_id,
                 'url' => $url,
             );
