@@ -1,4 +1,4 @@
-# wxpusher PHP 快速开发工具类
+# wxpusher for PHP
 ------
 [![GitHub issues](https://img.shields.io/github/issues/wxpusher/wxpusher-sdk-php)](https://github.com/wxpusher/wxpusher-sdk-php/issues)
 [![GitHub stars](https://img.shields.io/github/stars/meloncn/wxpusher-sdk-php)](https://github.com/meloncn/wxpusher-sdk-php/stargazers)
@@ -7,28 +7,17 @@
 
 ## 简介
 
-* 一个基于PHP对 [Wxpusher](http://wxpusher.zjiecode.com) 微信推送服务的快速开发工具类。
-* 完整基于 [Wxpusher 文档](http://wxpusher.zjiecode.com/docs/) 实现。
-* 优化部分参数调用方式，
-
-## 主要实现功能
-
-> * 快速短文本信息发送
-> * 标准文本格式信息，HTML以及markdown文本
-> * 创建自定义二维码请求
-> * 检查消息发送状态
-> * 获取已关注者信息
+* 基于PHP对 [Wxpusher](http://wxpusher.zjiecode.com) 微信推送服务的接口封装。
 
 ## 注意事项
-*  PHP Version >= 5.4 的系统环境下。
-* 发送标准信息，创建二维码操作需启用CURL支持。
+*  PHP Version >= 5.4 
+* 发送Send()，Qrcreate()函数需 CURL 支持。
 
 ## 基本使用方法
 
 #### 使用前准备
-引入本类库文件，可自定义命名空间于您的项目中。使用前进行实例化操作。
+引入本类库文件，实例化时需传入网站获取的APP_TOKEN值。
 
-实例化时需传入网站获取的APP_TOKEN值
 ```php
  <?php
  require("wxpusher.class.php");
@@ -38,7 +27,7 @@
  // TODO What u want...
  
 ```
-#### 1、快速发送消息
+#### 1、快速发送消息(GET请求传送)
 结构
 
 quickSend(用户id,主题id,内容,超链接,debug模式);
@@ -54,25 +43,25 @@ $wxpusher->quickSend('','10','Hello','http://localhost.com',false);
 ```
 
 
-#### 2、标准信息发送消息
+#### 2、标准信息发送消息（POST请求传送）
 结构
 
- send(内容,消息类型,是否为用户id,ID,超链接,是否获取messageId)
- 
- * 内容为字符串形式，使用 \n 换行
+ send(内容,摘要,消息类型,是否为用户id,ID,超链接,是否获取messageId)
+
+ * 内容，摘要为字符串形式，使用 \n 换行
  * 内容类型为int类型，1表示文字 2表示html 3表示markdown
  * 是否为用户Id为bool类型，true代表id参数传入用户UID，false代表id参数传入主题ID
  * 传入单个ID可以使用int类型，多个ID请使用数组形式
  * url可为空
  * 是否返回消息ID为bool类型，如果为true则执行完毕后返回消息ID用于后期追踪。默认false。
- 
+
  实例代码：
- 
+
  ```
- $wxpusher->send('Hello','1','false',10,'www.google.com');
+ $wxpusher->send('Hello','Summary','1','false',10,'www.google.com');
  ```
 
-#### 3、创建参数二维码
+#### 3、创建二维码
 结构
 
 Qrcreate(参数,过期时间)
@@ -136,8 +125,7 @@ $wxpusher->getFunTotal();
 ```
 
 
-wxpusher-sdk-php遵循Apache2开源协议发布，并提供免费使用。
 
-[2020][Meloncn]
+Author [@Meloncn][https://github.com/meloncn/wxpusher-sdk-php]
 
-
+最后更新时间：2020年12月5日 20:54
