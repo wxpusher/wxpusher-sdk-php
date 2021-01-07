@@ -68,10 +68,10 @@ class Wxpusher
         $data = http_build_query(
             array(
                 'appToken' => $this->appToken,
-                'content' => urlencode($content),
+                'content' => $content,
                 'uid' => $uid,
                 'topicId' => $topicId,
-                'url'   => urlencode($url),
+                'url'   => $url,
             ));
         $result = json_decode(file_get_contents($this->appMsgGate.'/?'.$data),TRUE);
 
