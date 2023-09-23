@@ -121,7 +121,7 @@ class Wxpusher
      * 使用方法实例：
      *      $wx->send('内容','摘要','类型','是否为用户id',id或数组id,'需传送的url',是否返回messageID))
      */
-    public function send($content = null,$summary = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false)
+    public function send($content = null,$summary = null,$contentType = 1,$isUids = true,$array_id = [],$url = '',$getMessageId = false,$verifyPay = false)
     {
         {
             $type = $isUids?'uids':'topicIds';
@@ -136,6 +136,7 @@ class Wxpusher
                 'summary' => $summary,
                 $type   => $array_id,
                 'url' => $url,
+                'verifyPay' => $verifyPay,
             );
             $jsonStr = json_encode($postdata);
             $result_Original = json_decode($this->post_json($this->appMsgGate, $jsonStr),TRUE);//取出data内执行信息
