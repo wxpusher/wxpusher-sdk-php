@@ -39,7 +39,7 @@ quickSend(用户id,主题id,内容,超链接,debug模式);
 
 实例代码：
 ```
-$wxpusher->quickSend('','10','Hello','http://localhost.com',false);
+$wxpusher->quickSend('', '10', 'Hello', 'http://localhost.com', false);
 ```
 
 
@@ -58,7 +58,7 @@ $wxpusher->quickSend('','10','Hello','http://localhost.com',false);
  实例代码：
 
  ```
- $wxpusher->send('Hello','Summary','1','false',10,'www.google.com');
+ $wxpusher->send('Hello', 'Summary', 1, false, 10, 'www.google.com');
  ```
 
 #### 3、创建二维码
@@ -79,7 +79,7 @@ Qrcreate(参数,过期时间)
 实例代码：
 
 ```
-$wxpusher->Qrcreate('wxpusher',1800);
+$wxpusher->Qrcreate('wxpusher', 1800);
 ```
 
 
